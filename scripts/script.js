@@ -29,10 +29,17 @@ const getRandomWord = () => {
 }
 
 const gameOver = (isVictory) => {
+    let victoryMessages = ['ගැම්මක් තමයි', 'මොලේ තියනවා නේ', 'පට්ට පට්ට මගෙ level එකට නෑ හැබැයි', 'C O R A'];
+    let defeatMessages = ['වැරදි ඒකවත් දන්නෙ නැද්ද', 'මෝඩ යකෙක් ', 'පොඩි එකෙක් උනත් ඕක දන්නවා ', 'දන්නෙ නැද්ද ඊයා ', 'වැරදි!'];
+
+    // Generate a random index between 0 and the length of the array
+    let randomIndex = Math.floor(Math.random() * victoryMessages.length);
+
     // After game complete.. showing modal with relevant details
-    const modalText = isVictory ? `You found the word:` : 'The correct word was:';
+    const modalText = isVictory ? `ඔයා වචනේ හොයා ගත්තා:` : 'හරි වචනෙ:';
     gameModal.querySelector("img").src = `images/${isVictory ? 'victory' : 'lost'}.gif`;
-    gameModal.querySelector("h4").innerText = isVictory ? 'Congrats!' : 'Game Over!';
+    // Use the ternary operator to assign a random message based on the outcome
+    gameModal.querySelector("h4").innerText = isVictory ? victoryMessages[randomIndex] : defeatMessages[randomIndex];
     gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
     gameModal.classList.add("show");
 }

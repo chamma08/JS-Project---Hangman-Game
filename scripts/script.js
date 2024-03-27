@@ -6,6 +6,7 @@ const gameModal = document.querySelector(".game-modal");
 const playAgainBtn = gameModal.querySelector("button");
 
 // Initializing game variables
+//demoooooooooooo
 let currentWord, correctLetters, wrongGuessCount;
 const maxGuesses = 6;
 
